@@ -36,7 +36,8 @@ function surbma_yoast_breadcrumb_shortcode_shortcode( $atts ) {
 	$wpseo_internallinks = get_option( 'wpseo_internallinks' );
 
 	if ( class_exists( 'WPSEO_Breadcrumbs' ) && $wpseo_internallinks['breadcrumbs-enable'] == 1 ) {
-		yoast_breadcrumb( $before, $after );
+		$output = yoast_breadcrumb( $before, $after, false );
+		return $output;
 	}
 	elseif ( class_exists( 'WPSEO_Breadcrumbs' ) && $wpseo_internallinks['breadcrumbs-enable'] != 1 ) {
 		return __( '<p>Please enable the breadcrumb option to use this shortcode!</p>', 'surbma-yoast-breadcrumb-shortcode' );
